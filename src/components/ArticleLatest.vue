@@ -5,7 +5,7 @@
             <div class="card-body ">
                
                 <h4 class="card-title">{{ article.title }}</h4>
-                <div class="card-img"><img src="{{ article.img }}"/></div>
+                <div class="card-img"><img  v-bind:src=" article.img "/></div>
                 <p class="card-text">{{article.description }}</p>
             </div>
         </div>
@@ -31,7 +31,7 @@
         data() {
             return {
                 articles:[],
-             pagination: {}
+                pagination: {}
             };
         },
         created() {
@@ -46,10 +46,7 @@
                     .then(data => {(this.articles = data.data);this.paginator(data.meta, data.links)});
                    
                         
-           }
-        },
-      
-      
+           },
             paginator(meta,links) {
                 this.pagination = {
                     current_page: meta.current_page,
@@ -58,5 +55,9 @@
                     prev_page_url: links.prev
                 };
             },
+        },
+      
+      
+    
     };
 </script>
